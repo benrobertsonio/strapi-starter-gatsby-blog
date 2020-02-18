@@ -5,6 +5,8 @@ import { capitalize } from 'lodash'
 import normalize from './normalize'
 import authentication from './authentication'
 
+console.log('HRHOIHEOI')
+
 exports.sourceNodes = async (
   {
     store,
