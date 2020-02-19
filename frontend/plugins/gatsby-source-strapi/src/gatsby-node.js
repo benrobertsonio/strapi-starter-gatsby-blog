@@ -74,11 +74,11 @@ exports.sourceNodes = async (
     })
   })
 
-  const newNodes = getNodes().filter(
+  const newNodes = await getNodes().filter(
     n => n.internal.owner === `gatsby-source-strapi`
   )
 
-  const diff = existingNodes.filter(
+  const diff = await existingNodes.filter(
     ({ id: id1 }) => !newNodes.some(({ id: id2 }) => id2 === id1)
   )
 
@@ -86,8 +86,6 @@ exports.sourceNodes = async (
   diff.forEach(data => {
     deleteNode({ node: data })
   })
-
-  console.log(diff)
 
   fetchActivity.end()
 }

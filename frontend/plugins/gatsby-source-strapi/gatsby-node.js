@@ -123,10 +123,15 @@ exports.sourceNodes = function () {
               });
             });
 
-            newNodes = getNodes().filter(function (n) {
+            _context.next = 18;
+            return getNodes().filter(function (n) {
               return n.internal.owner === 'gatsby-source-strapi';
             });
-            diff = existingNodes.filter(function (_ref4) {
+
+          case 18:
+            newNodes = _context.sent;
+            _context.next = 21;
+            return existingNodes.filter(function (_ref4) {
               var id1 = _ref4.id;
               return !newNodes.some(function (_ref5) {
                 var id2 = _ref5.id;
@@ -134,17 +139,18 @@ exports.sourceNodes = function () {
               });
             });
 
-            // Delete nodes
+          case 21:
+            diff = _context.sent;
 
+
+            // Delete nodes
             diff.forEach(function (data) {
               deleteNode({ node: data });
             });
 
-            console.log(diff);
-
             fetchActivity.end();
 
-          case 21:
+          case 24:
           case 'end':
             return _context.stop();
         }
