@@ -44,7 +44,6 @@ exports.sourceNodes = async (
   fetchActivity.start()
 
   // Generate a list of promises based on the `contentTypes` option.
-
   const promises = contentTypes.map(contentType =>
     fetchData({
       apiURL,
