@@ -30,10 +30,6 @@ exports.sourceNodes = async (
     n => n.internal.owner === `gatsby-source-strapi`
   )
 
-  existingNodes.forEach(n => {
-    touchNode({ nodeId: n.id })
-  })
-
   // Authentication
   let jwtToken = await authentication({ loginData, reporter, apiURL })
 

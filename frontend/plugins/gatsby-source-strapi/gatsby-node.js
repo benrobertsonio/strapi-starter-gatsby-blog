@@ -63,16 +63,12 @@ exports.sourceNodes = function () {
               return n.internal.owner === 'gatsby-source-strapi';
             });
 
-
-            existingNodes.forEach(function (n) {
-              touchNode({ nodeId: n.id });
-            });
-
             // Authentication
-            _context.next = 5;
+
+            _context.next = 4;
             return (0, _authentication2.default)({ loginData: loginData, reporter: reporter, apiURL: apiURL });
 
-          case 5:
+          case 4:
             jwtToken = _context.sent;
 
 
@@ -94,12 +90,12 @@ exports.sourceNodes = function () {
 
             // Execute the promises.
 
-            _context.next = 11;
+            _context.next = 10;
             return _promise2.default.all(promises);
 
-          case 11:
+          case 10:
             entities = _context.sent;
-            _context.next = 14;
+            _context.next = 13;
             return _normalize2.default.downloadMediaFiles({
               entities: entities,
               apiURL: apiURL,
@@ -110,7 +106,7 @@ exports.sourceNodes = function () {
               jwtToken: jwtToken
             });
 
-          case 14:
+          case 13:
             entities = _context.sent;
 
 
@@ -142,7 +138,7 @@ exports.sourceNodes = function () {
 
             fetchActivity.end();
 
-          case 20:
+          case 19:
           case 'end':
             return _context.stop();
         }
