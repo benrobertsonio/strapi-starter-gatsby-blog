@@ -30,8 +30,8 @@ exports.sourceNodes = async (
     n => n.internal.owner === `gatsby-source-strapi`
   )
 
-  existingNodes.forEach(n => {
-    touchNode({ nodeId: n.id })
+  existingNodes.forEach(node => {
+    deleteNode({ node: node.id })
   })
 
   // Authentication
@@ -72,19 +72,6 @@ exports.sourceNodes = async (
       const node = Node(capitalize(contentType), item)
       createNode(node)
     })
-  })
-
-  const newNodes = await getNodes().filter(
-    n => n.internal.owner === `gatsby-source-strapi`
-  )
-
-  const diff = await existingNodes.filter(
-    ({ id: id1 }) => !newNodes.some(({ id: id2 }) => id2 === id1)
-  )
-
-  // Delete nodes
-  diff.forEach(data => {
-    deleteNode({ node: data.id })
   })
 
   fetchActivity.end()
