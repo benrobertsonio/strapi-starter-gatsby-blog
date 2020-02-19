@@ -26,14 +26,6 @@ exports.sourceNodes = async (
 ) => {
   const { createNode, deleteNode, touchNode } = actions
 
-  const existingNodes = getNodes().filter(
-    n => n.internal.owner === `gatsby-source-strapi`
-  )
-
-  existingNodes.forEach(n => {
-    touchNode({ nodeId: n.id })
-  })
-
   // Authentication
   let jwtToken = await authentication({ loginData, reporter, apiURL })
 
@@ -63,6 +55,14 @@ exports.sourceNodes = async (
     createNode,
     touchNode,
     jwtToken,
+  })
+
+  const existingNodes = getNodes().filter(
+    n => n.internal.owner === `gatsby-source-strapi`
+  )
+
+  existingNodes.forEach(n => {
+    touchNode({ nodeId: n.id })
   })
 
   // Create nodes

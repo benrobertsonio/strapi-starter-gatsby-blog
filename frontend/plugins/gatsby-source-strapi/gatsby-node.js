@@ -53,26 +53,19 @@ exports.sourceNodes = function () {
         loginData = _ref3$loginData === undefined ? {} : _ref3$loginData,
         _ref3$queryLimit = _ref3.queryLimit,
         queryLimit = _ref3$queryLimit === undefined ? 100 : _ref3$queryLimit;
-    var createNode, deleteNode, touchNode, existingNodes, jwtToken, fetchActivity, promises, entities, newNodes, diff;
+    var createNode, deleteNode, touchNode, jwtToken, fetchActivity, promises, entities, existingNodes, newNodes, diff;
     return _regenerator2.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             createNode = actions.createNode, deleteNode = actions.deleteNode, touchNode = actions.touchNode;
-            existingNodes = getNodes().filter(function (n) {
-              return n.internal.owner === 'gatsby-source-strapi';
-            });
-
-
-            existingNodes.forEach(function (n) {
-              touchNode({ nodeId: n.id });
-            });
 
             // Authentication
-            _context.next = 5;
+
+            _context.next = 3;
             return (0, _authentication2.default)({ loginData: loginData, reporter: reporter, apiURL: apiURL });
 
-          case 5:
+          case 3:
             jwtToken = _context.sent;
 
 
@@ -94,12 +87,12 @@ exports.sourceNodes = function () {
 
             // Execute the promises.
 
-            _context.next = 11;
+            _context.next = 9;
             return _promise2.default.all(promises);
 
-          case 11:
+          case 9:
             entities = _context.sent;
-            _context.next = 14;
+            _context.next = 12;
             return _normalize2.default.downloadMediaFiles({
               entities: entities,
               apiURL: apiURL,
@@ -110,9 +103,16 @@ exports.sourceNodes = function () {
               jwtToken: jwtToken
             });
 
-          case 14:
+          case 12:
             entities = _context.sent;
+            existingNodes = getNodes().filter(function (n) {
+              return n.internal.owner === 'gatsby-source-strapi';
+            });
 
+
+            existingNodes.forEach(function (n) {
+              touchNode({ nodeId: n.id });
+            });
 
             // Create nodes
             contentTypes.forEach(function (contentType, i) {
