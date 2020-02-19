@@ -137,7 +137,7 @@ exports.sourceNodes = function () {
             // Delete nodes
 
             diff.forEach(function (data) {
-              deleteNode({ node: data.id });
+              deleteNode({ node: data });
             });
 
             console.log(diff);
