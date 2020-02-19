@@ -55,7 +55,7 @@ exports.sourceNodes = function () {
         loginData = _ref3$loginData === undefined ? {} : _ref3$loginData,
         _ref3$queryLimit = _ref3.queryLimit,
         queryLimit = _ref3$queryLimit === undefined ? 100 : _ref3$queryLimit;
-    var createNode, deleteNode, touchNode, existingNodes, jwtToken, fetchActivity, promises, entities, newNodes, diff;
+    var createNode, deleteNode, touchNode, existingNodes, jwtToken, fetchActivity, promises, entities;
     return _regenerator2.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -67,7 +67,7 @@ exports.sourceNodes = function () {
 
 
             existingNodes.forEach(function (n) {
-              touchNode({ nodeId: n.id });
+              deleteNode({ node: n });
             });
 
             // Authentication
@@ -125,28 +125,9 @@ exports.sourceNodes = function () {
               });
             });
 
-            newNodes = getNodes().filter(function (n) {
-              return n.internal.owner === 'gatsby-source-strapi';
-            });
-            diff = existingNodes.filter(function (_ref4) {
-              var id1 = _ref4.id;
-              return !newNodes.some(function (_ref5) {
-                var id2 = _ref5.id;
-                return id2 === id1;
-              });
-            });
-
-            // Delete nodes
-
-            diff.forEach(function (data) {
-              deleteNode({ node: data });
-            });
-
-            console.log(diff);
-
             fetchActivity.end();
 
-          case 21:
+          case 17:
           case 'end':
             return _context.stop();
         }
