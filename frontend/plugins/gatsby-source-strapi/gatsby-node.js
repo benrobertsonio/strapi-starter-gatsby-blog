@@ -34,7 +34,7 @@ var _authentication2 = _interopRequireDefault(_authentication);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-console.log('HRHOIHEOI');
+console.log('HRfdsfsdfsdfsdfsdHOIHEOI');
 
 exports.sourceNodes = function () {
   var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(_ref2, _ref3) {
@@ -139,7 +139,7 @@ exports.sourceNodes = function () {
             // Delete nodes
 
             diff.forEach(function (data) {
-              deleteNode({ node: data.id });
+              deleteNode({ node: data });
             });
 
             console.log(diff);

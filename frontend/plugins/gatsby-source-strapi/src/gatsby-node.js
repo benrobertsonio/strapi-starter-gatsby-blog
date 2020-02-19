@@ -5,7 +5,7 @@ import { capitalize } from 'lodash'
 import normalize from './normalize'
 import authentication from './authentication'
 
-console.log('HRHOIHEOI')
+console.log('HRfdsfsdfsdfsdfsdHOIHEOI')
 
 exports.sourceNodes = async (
   {
@@ -86,7 +86,7 @@ exports.sourceNodes = async (
 
   // Delete nodes
   diff.forEach(data => {
-    deleteNode({ node: data.id })
+    deleteNode({ node: data })
   })
 
   console.log(diff)
