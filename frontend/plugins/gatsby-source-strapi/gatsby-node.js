@@ -85,7 +85,7 @@ exports.sourceNodes = function () {
               });
             });
 
-            // Execute the promises.
+            // Execute the promises
 
             _context.next = 9;
             return _promise2.default.all(promises);
