@@ -84,7 +84,7 @@ exports.sourceNodes = async (
 
   // Delete nodes
   diff.forEach(data => {
-    deleteNode({ node: data.id })
+    deleteNode({ node: data })
   })
 
   fetchActivity.end()
