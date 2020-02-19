@@ -145,7 +145,7 @@ exports.sourceNodes = function () {
 
             // Delete nodes
             diff.forEach(function (data) {
-              deleteNode({ node: data });
+              deleteNode({ node: data.id });
             });
 
             fetchActivity.end();
